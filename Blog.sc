@@ -7,7 +7,9 @@ val unsortedPosts = for(path <- postFiles) yield {
   val Array(prefix, suffix) = path.last.split(" - ")
   (prefix.toInt, suffix, path)
 }
-
+def mdNameToHtml(name: String) = {
+  name.stripSuffix(".md").replace(" ", "-").toLowerCase + ".html"
+}
 val sortedPosts = unsortedPosts.sortBy(_._1)
 
 println("POSTS")
@@ -21,9 +23,17 @@ for((_, suffix, path) <- sortedPosts) {
   val document = parser.parse(read! path)
   val renderer = HtmlRenderer.builder().build()
   val output = renderer.render(document)
+  import scalatags.Text.all._
   write(
-    cwd/'blog/(suffix.stripSuffix(".md").replace(" ", "-").toLowerCase + ".html"),
-  output
+    cwd/'blog/mdNameToHtml(suffix),
+    html(
+      head(),
+      body(
+        h1(a("Charlie's Blog", href := "../index.html")),
+        h1(suffix.stripSuffix(".md")),
+        raw(output)
+      )
+    ).render
   )
 }
 val HTML = {
@@ -34,7 +44,7 @@ val HTML = {
     body(
       h1("Charlie's Blog"),
       for((_, suffix, _) <- sortedPosts)
-      yield h2(suffix)
+      yield h2(a(suffix, href := ("blog/" + mdNameToHtml(suffix))))
    ) 
   ).render
 }

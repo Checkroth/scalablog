@@ -12,6 +12,14 @@ def mdNameToHtml(name: String) = {
 }
 val sortedPosts = unsortedPosts.sortBy(_._1)
 
+val bootstrapCss = {
+  import scalatags.Text.all._
+  link(
+    rel := "stylesheet",
+    href := "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  )
+}
+
 println("POSTS")
 sortedPosts.foreach(println)
 for((_, suffix, path) <- sortedPosts) {
@@ -27,7 +35,7 @@ for((_, suffix, path) <- sortedPosts) {
   write(
     cwd/'blog/mdNameToHtml(suffix),
     html(
-      head(),
+      head(bootstrapCss),
       body(
         h1(a("Charlie's Blog", href := "../index.html")),
         h1(suffix.stripSuffix(".md")),
@@ -40,7 +48,7 @@ val HTML = {
   import scalatags.Text.all._
 
   html(
-    head(),
+    head(bootstrapCss),
     body(
       h1("Charlie's Blog"),
       for((_, suffix, _) <- sortedPosts)

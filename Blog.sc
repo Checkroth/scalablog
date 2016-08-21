@@ -1,6 +1,7 @@
 import $ivy.`com.lihaoyi::scalatags:0.6.0`
 import $ivy.`com.atlassian.commonmark:commonmark:0.5.1`
 import ammonite.ops._
+import $file.StyleComponents, StyleComponents.bootstrapCss
 
 val postFiles = ls! cwd/'posts
 val unsortedPosts = for(path <- postFiles) yield {
@@ -11,14 +12,6 @@ def mdNameToHtml(name: String) = {
   name.stripSuffix(".md").replace(" ", "-").toLowerCase + ".html"
 }
 val sortedPosts = unsortedPosts.sortBy(_._1)
-
-val bootstrapCss = {
-  import scalatags.Text.all._
-  link(
-    rel := "stylesheet",
-    href := "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-  )
-}
 
 println("POSTS")
 sortedPosts.foreach(println)
@@ -44,17 +37,17 @@ for((_, suffix, path) <- sortedPosts) {
     ).render
   )
 }
-val HTML = {
-  import scalatags.Text.all._
-
-  html(
-    head(bootstrapCss),
-    body(
-      h1("Charlie's Blog"),
-      for((_, suffix, _) <- sortedPosts)
-      yield h2(a(suffix, href := ("blog/" + mdNameToHtml(suffix))))
-   ) 
-  ).render
-}
-
-write(cwd/"index.html", HTML)
+// val HTML = {
+//   import scalatags.Text.all._
+//
+//   html(
+//     head(bootstrapCss),
+//     body(
+//       h1("Charlie's Blog"),
+//       for((_, suffix, _) <- sortedPosts)
+//       yield h2(a(suffix, href := ("blog/" + mdNameToHtml(suffix))))
+//    )
+//   ).render
+// }
+//
+// write(cwd/"index.html", HTML)

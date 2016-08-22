@@ -3,10 +3,10 @@ import $ivy.`com.atlassian.commonmark:commonmark:0.5.1`
 import ammonite.ops._
 import $file.StyleComponents, StyleComponents._
 import scalatags.Text._
-import $file.Blog, Blog._
+// import $file.Blog, Blog._
 import scalatags.Text.all.{width, height, _}
 
-def ConstructHtml(content: Frag) = {
+def ConstructHtml(content: Frag, homeDir: String) = {
   val pageTitle = "Charles Henry Heckroth"
   // val sheets = Seq(StyleComponents.bootstrapCss)
 
@@ -43,7 +43,8 @@ def ConstructHtml(content: Frag) = {
             a(
               color := "white",
               "Charles Henry Heckroth",
-              fontWeight.bold
+              fontWeight.bold,
+              href := s"$homeDir/index.html"
             )
           )
         )
@@ -58,10 +59,11 @@ def ConstructHtml(content: Frag) = {
     )
   ).render
 }
-def contents = div(
-  for((_, suffix, _) <- sortedPosts)
-    yield h2(a(suffix, href := ("blog/" + mdNameToHtml(suffix))))
-)
-
-
-write(cwd/'genFiles/"index.html", ConstructHtml(contents))
+// def contents = div(
+//   for((_, suffix, _) <- sortedPosts)
+//     yield h2(a(suffix, href := ("blog/" + mdNameToHtml(suffix))))
+// )
+//
+//
+// write(cwd/'genFiles/"index.html", ConstructHtml(contents, "."))
+// genBlog

@@ -64,4 +64,4 @@ def contents = div(
 )
 
 
-write(cwd/"index.html", ConstructHtml(contents))
+write(cwd/'genFiles/"index.html", ConstructHtml(contents))

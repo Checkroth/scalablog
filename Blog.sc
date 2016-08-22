@@ -26,7 +26,7 @@ for((_, suffix, path) <- sortedPosts) {
   val output = renderer.render(document)
   import scalatags.Text.all._
   write(
-    cwd/'blog/mdNameToHtml(suffix),
+    cwd/'genFiles/'blog/mdNameToHtml(suffix),
     html(
       head(bootstrapCss),
       body(

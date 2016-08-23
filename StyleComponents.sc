@@ -24,7 +24,9 @@ object LargeStyles extends StyleSheet {
   )
 
   def bodyContent = cls(
-    textAlign.left
+    textAlign.left,
+    margin := "2em auto 0",
+    width := "50%"
   )
 
 }

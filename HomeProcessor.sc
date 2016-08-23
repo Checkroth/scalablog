@@ -32,17 +32,29 @@ def ConstructHtml(content: Frag, homeDir: String) = {
     ),
     body(
       div(
-        LargeStyles.header,
-        SmallStyles.header,
         GeneralStyles.header,
         div(
+          LargeStyles.headerLarge,
+          SmallStyles.headerLarge,
           LargeStyles.headerContent,
-          SmallStyles.headerContent,
           h1(
             a(
               GeneralStyles.headerText,
               color := "white",
               "Charles Henry Heckroth",
+              href := s"$homeDir/index.html"
+            )
+          )
+        ),
+        div(
+          SmallStyles.headerSmall,
+          LargeStyles.headerSmall,
+          SmallStyles.headerContent,
+          h1(
+            a(
+              GeneralStyles.headerText,
+              color := "white",
+              "@checkroth",
               href := s"$homeDir/index.html"
             )
           )

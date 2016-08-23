@@ -14,10 +14,11 @@ val bootstrapCss = {
 object LargeStyles extends StyleSheet {
   override def customSheetName = Some("LargeStyles")
 
-  def header = cls(
+  def headerLarge = cls(
     styles.width := "100%",
     justifyContent.center
   )
+  def headerSmall = cls(display := "none")
 
   def headerContent = cls(
     textAlign.center
@@ -34,18 +35,20 @@ object LargeStyles extends StyleSheet {
 object SmallStyles extends StyleSheet {
   override def customSheetName = Some("SmallStyles")
 
-  def header = cls(
+  def headerSmall = cls(
     styles.width := "100%",
     justifyContent.center,
     fontWeight := "bold"
   )
+  def headerLarge = cls(display := "none")
 
   def headerContent = cls(
     textAlign.center
   )
 
   def bodyContent = cls(
-    textAlign.left
+    textAlign.left,
+    marginLeft := "1em"
   )
 }
 

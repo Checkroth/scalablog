@@ -34,7 +34,8 @@ object SmallStyles extends StyleSheet {
 
   def header = cls(
     styles.width := "100%",
-    justifyContent.center
+    justifyContent.center,
+    fontWeight := "bold"
   )
 
   def headerContent = cls(
@@ -51,5 +52,10 @@ object GeneralStyles extends StyleSheet {
 
   def header = cls(
     backgroundColor := "#3D2918"
+  )
+
+  def headerText = cls(
+    fontWeight := "bold",
+    fontSize := "1.9em"
   )
 }

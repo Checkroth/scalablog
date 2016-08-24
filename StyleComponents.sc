@@ -16,7 +16,8 @@ object LargeStyles extends StyleSheet {
 
   def headerLarge = cls(
     styles.width := "100%",
-    justifyContent.center
+    justifyContent.center,
+    paddingTop := "1.2em"
   )
   def headerSmall = cls(display := "none")
 
@@ -29,6 +30,19 @@ object LargeStyles extends StyleSheet {
     margin := "2em auto 0",
     width := "50%"
   )
+
+  def navElem = cls(
+    textAlign.center,
+    margin := "1em 0",
+    width := "50%",
+    float.left
+  )
+
+  def navElemText = cls(
+    fontSize := "2.5em"
+  )
+
+  def headerText = cls(fontSize := "1.9em")
 
 }
 
@@ -43,12 +57,23 @@ object SmallStyles extends StyleSheet {
   def headerLarge = cls(display := "none")
 
   def headerContent = cls(
-    textAlign.center
+    textAlign.center,
+    paddingTop := "0.5em"
   )
+
+  def headerText = cls(fontSize := "1.35em")
 
   def bodyContent = cls(
     textAlign.left,
     marginLeft := "1em"
+  )
+
+  def navElem = cls(
+    textAlign.center,
+    marginTop := ".25em",
+    width := "100%",
+    fontWeight := "bold",
+    fontSize := "2em"
   )
 }
 
@@ -60,7 +85,11 @@ object GeneralStyles extends StyleSheet {
   )
 
   def headerText = cls(
-    fontWeight := "bold",
-    fontSize := "1.9em"
+    fontWeight := "bold"
+  )
+
+  def navBar = cls(
+    backgroundColor := "#3D2918",
+    height := "7em"
   )
 }

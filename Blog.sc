@@ -12,7 +12,7 @@ val unsortedPosts = for(path <- postFiles) yield {
 def mdNameToHtml(name: String) = {
   name.stripSuffix(".md").replace(" ", "-").toLowerCase + ".html"
 }
-val sortedPosts = unsortedPosts.sortBy(_._1)
+val sortedPosts = unsortedPosts.sortBy(- _._1)
 
 println("POSTS")
 sortedPosts.foreach(println)

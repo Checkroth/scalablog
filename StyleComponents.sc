@@ -38,6 +38,8 @@ object LargeStyles extends StyleSheet {
     float.left
   )
 
+  def navBar = cls(height := "7em")
+
   def navElemText = cls(
     fontSize := "2.5em"
   )
@@ -75,6 +77,8 @@ object SmallStyles extends StyleSheet {
     fontWeight := "bold",
     fontSize := "2em"
   )
+
+  def navBar = cls(height := "5em")
 }
 
 object GeneralStyles extends StyleSheet {
@@ -88,8 +92,5 @@ object GeneralStyles extends StyleSheet {
     fontWeight := "bold"
   )
 
-  def navBar = cls(
-    backgroundColor := "#3D2918",
-    height := "7em"
-  )
+  def navBar = cls(backgroundColor := "#3D2918")
 }

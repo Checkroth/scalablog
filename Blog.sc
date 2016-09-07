@@ -4,7 +4,7 @@ import ammonite.ops._
 import $file.StyleComponents, StyleComponents.bootstrapCss
 import $file.HomeProcessor, HomeProcessor.ConstructHtml
 
-val postFiles = ls! cwd/'posts
+val postFiles = ls! cwd/'mds/'posts
 val unsortedPosts = for(path <- postFiles) yield {
   val Array(prefix, suffix) = path.last.split(" - ")
   (prefix.toInt, suffix, path)
@@ -18,23 +18,36 @@ println("POSTS")
 sortedPosts.foreach(println)
 def genBlog = {
   for((_, suffix, path) <- sortedPosts) {
-    import org.commonmark.html.HtmlRenderer
-    import org.commonmark.node._
-    import org.commonmark.parser.Parser
-
-    val parser = Parser.builder().build()
-    val document = parser.parse(read! path)
-    val renderer = HtmlRenderer.builder().build()
-    val output = renderer.render(document)
-    import scalatags.Text.all._
-    write(
-      cwd/'genFiles/'blog/mdNameToHtml(suffix),
-      ConstructHtml(
-          div(
-            h1(suffix.stripSuffix(".md")),
-            raw(output)
-          ),
-          ".."
-        ))
+    
+    parseAndRender(path, 
+                    RelPath("blog"),
+                    mdNameToHtml(suffix),
+                    "..", 
+                    Some(suffix.stripSuffix(".md")))
   }
+}
+
+def parseAndRender(readPath: Readable,
+                    outputPath: RelPath,
+                    outputName: String,
+                    homePath: String,
+                    pageHeader: Option[String]) = {
+  import org.commonmark.html.HtmlRenderer
+  import org.commonmark.node._
+  import org.commonmark.parser.Parser
+
+  val parser = Parser.builder().build()
+  val document = parser.parse(read! readPath)
+  val renderer = HtmlRenderer.builder.build()
+  val output = renderer.render(document)
+  import scalatags.Text.all._
+  write(
+    cwd/'genFiles/outputPath/outputName, ConstructHtml(
+        div(
+          pageHeader.map(h1(_)).getOrElse(span()),
+          raw(output)
+        ),
+        homePath
+    )
+  )
 }

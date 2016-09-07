@@ -15,15 +15,9 @@ def ConstructHtml(content: Frag, homeDir: String) = {
     div("Contact") -> "http://contactlink.com"
   )
 
-  /**
-    This is largely copy-paste from lihaoyi's page
-    http://www.lihaoyi.com/post/HelloWorldBlog.html
-  **/
   html(
     meta(charset := "utf-8"),
     head(
-      // for(sheet <- sheets)
-        // yield link(href := sheet, rel := "stylesheet", `type` := "text/css"),
       tags2.title(pageTitle),
       tags2.style(s"@media (min-width: 60em) {${LargeStyles.styleSheetText}}"),
       tags2.style(s"@media (max-width: 60em) {${SmallStyles.styleSheetText}}"),
@@ -38,12 +32,11 @@ def ConstructHtml(content: Frag, homeDir: String) = {
           SmallStyles.headerLarge,
           LargeStyles.headerContent,
           h1(
-            a(
+            span(
               GeneralStyles.headerText,
               LargeStyles.headerText,
               color := "white",
-              "Charles Henry Heckroth",
-              href := s"$homeDir/index.html"
+              "Charles Henry Heckroth"
             )
           )
         ),
@@ -57,20 +50,23 @@ def ConstructHtml(content: Frag, homeDir: String) = {
               SmallStyles.headerText,
               color := "white",
               "@checkroth",
-              href := s"$homeDir/index.html"
+              href := s"$homeDir/main/index.html"
             )
           )
         ),
         div(
           GeneralStyles.navBar,
+          LargeStyles.navBar,
+          SmallStyles.navBar,
           div(
             LargeStyles.navElem,
             SmallStyles.navElem,
+            SmallStyles.headerLarge,
             a(
               LargeStyles.navElemText,
               color := "white",
               "Home",
-              href := s"$homeDir/index.html"
+              href := s"$homeDir/main/index.html"
             )
           ),
           div(
@@ -80,7 +76,7 @@ def ConstructHtml(content: Frag, homeDir: String) = {
               LargeStyles.navElemText,
               color := "white",
               "Blog",
-              href := s"$homeDir/blog.html"
+              href := s"$homeDir/topBlog.html"
             )
           )
         )

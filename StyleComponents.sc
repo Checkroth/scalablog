@@ -11,6 +11,8 @@ val bootstrapCss = {
   )
 }
 
+val mainColor = "#3D2918"
+
 object LargeStyles extends StyleSheet {
   override def customSheetName = Some("LargeStyles")
 
@@ -47,6 +49,13 @@ object LargeStyles extends StyleSheet {
 
   def headerText = cls(fontSize := "1.9em")
 
+  def blogList = cls(
+    fontSize := "1.4em",
+    borderLeft := s"0.4em solid $mainColor",
+    paddingLeft := "0.6em",
+    marginBottom := "0.3em" 
+    )
+
 }
 
 object SmallStyles extends StyleSheet {
@@ -68,7 +77,7 @@ object SmallStyles extends StyleSheet {
 
   def bodyContent = cls(
     textAlign.left,
-    marginLeft := "1em",
+    margin := "1em",
     fontSize := "1.3em"
   )
 
@@ -87,7 +96,7 @@ object GeneralStyles extends StyleSheet {
   override def customSheetName = Some("GeneralStyles")
 
   def header = cls(
-    backgroundColor := "#3D2918"
+    backgroundColor := mainColor
   )
 
   def headerText = cls(

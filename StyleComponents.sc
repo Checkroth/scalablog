@@ -28,7 +28,8 @@ object LargeStyles extends StyleSheet {
   def bodyContent = cls(
     textAlign.left,
     margin := "2em auto 0",
-    width := "50%"
+    width := "50%",
+    fontSize := "1.5em"
   )
 
   def navElem = cls(
@@ -67,7 +68,8 @@ object SmallStyles extends StyleSheet {
 
   def bodyContent = cls(
     textAlign.left,
-    marginLeft := "1em"
+    marginLeft := "1em",
+    fontSize := "1.3em"
   )
 
   def navElem = cls(

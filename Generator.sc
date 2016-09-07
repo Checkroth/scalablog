@@ -8,13 +8,15 @@ import $ivy.`com.atlassian.commonmark:commonmark:0.5.1`
 import ammonite.ops._
 import scalatags.Text._
 import scalatags.Text.all._
-import StyleComponents.LargeStyles
+import StyleComponents.LargeStyles, StyleComponents.SmallStyles
 
 
 def blogContents = div(
-  for((_, suffix, _) <- sortedPosts)
-    yield div(
+	h1("Blog Posts"),
+  	for((_, suffix, _) <- sortedPosts)
+	yield div(
     	LargeStyles.blogList,
+    	SmallStyles.blogList,
     	a(
     		suffix.stripSuffix(".md"), 
     		href := ("blog/" + mdNameToHtml(suffix))

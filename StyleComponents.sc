@@ -89,6 +89,8 @@ object SmallStyles extends StyleSheet {
     fontSize := "2em"
   )
 
+  def blogList = cls(fontSize := "1.6em")
+
   def navBar = cls(height := "5em")
 }
 

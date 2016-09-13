@@ -24,12 +24,12 @@ def blogContents = div(
     	)
 )
 
-write(cwd/'genFiles/"topBlog.html", ConstructHtml(blogContents, "."))
+write(cwd/"topBlog.html", ConstructHtml(blogContents, "."))
 genBlog
 parseAndRender(
 	cwd/'mds/"index.md",
-	RelPath("main"),
+	RelPath("."),
 	"index.html",
-	"..",
+	".",
 	None
 )

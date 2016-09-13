@@ -42,7 +42,7 @@ def parseAndRender(readPath: Readable,
   val output = renderer.render(document)
   import scalatags.Text.all._
   write(
-    cwd/'genFiles/outputPath/outputName, ConstructHtml(
+    cwd/outputPath/outputName, ConstructHtml(
         div(
           pageHeader.map(h1(_)).getOrElse(span()),
           raw(output)

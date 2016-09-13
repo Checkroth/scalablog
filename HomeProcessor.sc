@@ -50,7 +50,7 @@ def ConstructHtml(content: Frag, homeDir: String) = {
               SmallStyles.headerText,
               color := "white",
               "@checkroth",
-              href := s"$homeDir/main/index.html"
+              href := s"$homeDir/index.html"
             )
           )
         ),
@@ -66,7 +66,7 @@ def ConstructHtml(content: Frag, homeDir: String) = {
               LargeStyles.navElemText,
               color := "white",
               "Home",
-              href := s"$homeDir/main/index.html"
+              href := s"$homeDir/index.html"
             )
           ),
           div(

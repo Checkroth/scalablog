@@ -1,8 +1,10 @@
 import $ivy.`com.lihaoyi::scalatags:0.6.0`
 import $ivy.`com.atlassian.commonmark:commonmark:0.5.1`
+import $ivy.`com.lihaoyi::scalatags:0.6.0`
 import ammonite.ops._
 import $file.StyleComponents, StyleComponents.bootstrapCss
 import $file.HomeProcessor, HomeProcessor.ConstructHtml
+import scalatags.Text.Modifier
 
 val postFiles = ls! cwd/'mds/'posts
 val unsortedPosts = for(path <- postFiles) yield {
@@ -23,7 +25,8 @@ def genBlog = {
                     RelPath("blog"),
                     mdNameToHtml(suffix),
                     "..", 
-                    Some(suffix.stripSuffix(".md")))
+                    Some(suffix.stripSuffix(".md")),
+                    None)
   }
 }
 
@@ -31,7 +34,8 @@ def parseAndRender(readPath: Readable,
                     outputPath: RelPath,
                     outputName: String,
                     homePath: String,
-                    pageHeader: Option[String]) = {
+                    pageHeader: Option[String],
+                    contentStyle: Option[Modifier]) = {
   import org.commonmark.html.HtmlRenderer
   import org.commonmark.node._
   import org.commonmark.parser.Parser
@@ -44,6 +48,7 @@ def parseAndRender(readPath: Readable,
   write(
     cwd/outputPath/outputName, ConstructHtml(
         div(
+          contentStyle.getOrElse(span()),
           pageHeader.map(h1(_)).getOrElse(span()),
           raw(output)
         ),

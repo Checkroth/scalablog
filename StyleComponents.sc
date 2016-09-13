@@ -65,6 +65,10 @@ object LargeStyles extends StyleSheet {
     marginBottom := "0.3em" 
     )
 
+  def indexStyle = cls(padding := "0 20%")
+
+  def blogListContainer = cls(padding := "0 26%")
+
 }
 
 object SmallStyles extends StyleSheet {

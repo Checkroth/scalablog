@@ -12,6 +12,7 @@ import StyleComponents.LargeStyles, StyleComponents.SmallStyles
 
 
 def blogContents = div(
+	LargeStyles.blogListContainer,
 	h1("Blog Posts"),
   	for((_, suffix, _) <- sortedPosts)
 	yield div(
@@ -31,5 +32,6 @@ parseAndRender(
 	RelPath("."),
 	"index.html",
 	".",
-	None
+	None,
+	Some(LargeStyles.indexStyle)
 )

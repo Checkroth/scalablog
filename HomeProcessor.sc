@@ -62,6 +62,7 @@ def ConstructHtml(content: Frag, homeDir: String) = {
             LargeStyles.navElem,
             SmallStyles.navElem,
             SmallStyles.headerLarge,
+            LargeStyles.navElemLeft,
             a(
               LargeStyles.navElemText,
               color := "white",
@@ -72,6 +73,7 @@ def ConstructHtml(content: Frag, homeDir: String) = {
           div(
             LargeStyles.navElem,
             SmallStyles.navElem,
+            LargeStyles.navElemRight,
             a(
               LargeStyles.navElemText,
               color := "white",

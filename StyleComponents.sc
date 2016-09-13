@@ -35,10 +35,19 @@ object LargeStyles extends StyleSheet {
   )
 
   def navElem = cls(
-    textAlign.center,
     margin := "1em 0",
     width := "50%",
     float.left
+  )
+
+  def navElemLeft = cls(
+    textAlign := "right",
+    paddingRight := "10em"
+  )
+
+  def navElemRight = cls(
+    textAlign := "left",
+    paddingLeft := "10em"
   )
 
   def navBar = cls(height := "7em")

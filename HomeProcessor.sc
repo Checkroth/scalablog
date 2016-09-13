@@ -22,7 +22,8 @@ def ConstructHtml(content: Frag, homeDir: String) = {
       tags2.style(s"@media (min-width: 60em) {${LargeStyles.styleSheetText}}"),
       tags2.style(s"@media (max-width: 60em) {${SmallStyles.styleSheetText}}"),
       tags2.style(GeneralStyles.styleSheetText),
-      bootstrapCss
+      bootstrapCss,
+      googleAnalytics
     ),
     body(
       div(
@@ -91,3 +92,13 @@ def ConstructHtml(content: Frag, homeDir: String) = {
     )
   ).render
 }
+def googleAnalytics: Frag = script(raw(
+  """
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84071551-1', 'auto');
+  ga('send', 'pageview');
+  """.stripMargin))

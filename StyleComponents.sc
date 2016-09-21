@@ -19,7 +19,7 @@ object LargeStyles extends StyleSheet {
   def headerLarge = cls(
     styles.width := "100%",
     justifyContent.center,
-    paddingTop := "1.2em"
+    paddingTop := "0.1em"
   )
   def headerSmall = cls(display := "none")
 
@@ -30,12 +30,11 @@ object LargeStyles extends StyleSheet {
   def bodyContent = cls(
     textAlign.left,
     margin := "2em auto 0",
-    width := "50%",
-    fontSize := "1.5em"
+    width := "85%",
+    fontSize := "1.2em"
   )
 
   def navElem = cls(
-    margin := "1em 0",
     width := "50%",
     float.left
   )
@@ -50,13 +49,13 @@ object LargeStyles extends StyleSheet {
     paddingLeft := "10em"
   )
 
-  def navBar = cls(height := "7em")
+  def navBar = cls(height := "5em")
 
   def navElemText = cls(
     fontSize := "2.5em"
   )
 
-  def headerText = cls(fontSize := "1.9em")
+  def headerText = cls(fontSize := "1.4em")
 
   def blogList = cls(
     fontSize := "1.4em",

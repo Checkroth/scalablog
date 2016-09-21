@@ -17,6 +17,7 @@ def ConstructHtml(content: Frag, homeDir: String) = {
 
   html(
     meta(charset := "utf-8"),
+		meta(raw(""" <meta name="viewport" content="width=device-width, initial-scale=1">  """.stripMargin)),
     head(
       tags2.title(pageTitle),
       tags2.style(s"@media (min-width: 60em) {${LargeStyles.styleSheetText}}"),

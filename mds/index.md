@@ -1,7 +1,7 @@
 About
 ======
-My name is Charlie, and this is my site.
-This site is built with ScalaTags, compiled with Ammonite, and hosted on Heroku.
+My name is Charles Heckroth, and this is my site.
+This site is built with ScalaTags, compiled with Ammonite, and hosted on github pages.
 
 Links
 ======

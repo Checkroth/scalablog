@@ -19,7 +19,8 @@ object LargeStyles extends StyleSheet {
   def headerLarge = cls(
     styles.width := "100%",
     justifyContent.center,
-    paddingTop := "0.1em"
+    paddingTop := "0.1em",
+    paddingBottom := "0.1em"
   )
   def headerSmall = cls(display := "none")
 
@@ -76,7 +77,8 @@ object SmallStyles extends StyleSheet {
   def headerSmall = cls(
     styles.width := "100%",
     justifyContent.center,
-    fontWeight := "bold"
+    fontWeight := "bold",
+    paddingBottom := "0.1em"
   )
   def headerLarge = cls(display := "none")
 

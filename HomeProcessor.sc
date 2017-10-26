@@ -56,35 +56,35 @@ def ConstructHtml(content: Frag, homeDir: String) = {
             )
           )
         )
-//        ,
-//        div(
-//          GeneralStyles.navBar,
-//          LargeStyles.navBar,
-//          SmallStyles.navBar,
-//          div(
-//            LargeStyles.navElem,
-//            SmallStyles.navElem,
-//            SmallStyles.headerLarge,
-//            LargeStyles.navElemLeft,
-//            a(
-//              LargeStyles.navElemText,
-//              color := "white",
-//              "Home",
-//              href := s"$homeDir/index.html"
-//            )
-//          ),
-//          div(
-//            LargeStyles.navElem,
-//            SmallStyles.navElem,
-//            LargeStyles.navElemRight,
-//            a(
-//              LargeStyles.navElemText,
-//              color := "white",
-//              "Blog",
-//              href := s"$homeDir/topBlog.html"
-//            )
-//          )
-//        )
+        ,
+        div(
+          GeneralStyles.navBar,
+          LargeStyles.navBar,
+          SmallStyles.navBar,
+          div(
+            LargeStyles.navElem,
+            SmallStyles.navElem,
+            SmallStyles.headerLarge,
+            LargeStyles.navElemLeft,
+            a(
+              LargeStyles.navElemText,
+              color := "white",
+              "Home",
+              href := s"$homeDir/index.html"
+            )
+          ),
+          div(
+            LargeStyles.navElem,
+            SmallStyles.navElem,
+            LargeStyles.navElemRight,
+            a(
+              LargeStyles.navElemText,
+              color := "white",
+              "Blog",
+              href := s"$homeDir/topBlog.html"
+            )
+          )
+        )
       ),
       div(
         LargeStyles.bodyContent,

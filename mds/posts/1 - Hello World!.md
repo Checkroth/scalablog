@@ -10,8 +10,7 @@ Some parts of the [source code](https://github.com/Checkroth/scalablog) are larg
 
 I didn't write a line of HTML or CSS for this page - its all scala and markdown. I just run my `Generator.sc`, and all the pages are freshly generated for every change.
 
-[ScalaTags](http://www.lihaoyi.com/scalatags/) is a fun thing to mess around with, but I don't know how applicable it is in any commercial use. It provides a way to functionally compose a website and all its styles, but there are other tools and other languages are probably more apppropriate. 
+[ScalaTags](http://www.lihaoyi.com/scalatags/) is a fun thing to mess around with. It provides a way to functionally compose a website and all its styles.
 
 It's a good tool for side-projects, especially combined with [Ammonite](http://www.lihaoyi.com/Ammonite/), which makes it possible to build your project without relying heavier tools like SBT or Maven.
 
-That being said, I'll keep maintaining this site with it. Generating the pages and tracking / storing posts with git is a lot easier than my previous Wordpress monstrocity. Really, I just don't recommend Wordpress for anything.

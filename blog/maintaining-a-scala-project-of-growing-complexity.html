@@ -1,0 +1,139 @@
+<html><meta charset="utf-8" /><meta> <meta name="viewport" content="width=device-width, initial-scale=1">  </meta><head><title>Charles Henry Heckroth</title><style>@media (min-width: 60em) {.LargeStyles-headerLarge{
+  justify-content: center;
+  padding-bottom: 0.1em;
+  padding-top: 0.1em;
+  width: 100%;
+}
+
+.LargeStyles-headerSmall{
+  display: none;
+}
+
+.LargeStyles-headerContent{
+  text-align: center;
+}
+
+.LargeStyles-bodyContent{
+  font-size: 1.2em;
+  margin: 2em auto 0;
+  text-align: left;
+  width: 85%;
+}
+
+.LargeStyles-navElem{
+  float: left;
+  width: 50%;
+}
+
+.LargeStyles-navElemLeft{
+  padding-right: 10em;
+  text-align: right;
+}
+
+.LargeStyles-navElemRight{
+  padding-left: 10em;
+  text-align: left;
+}
+
+.LargeStyles-navBar{
+  height: 5em;
+}
+
+.LargeStyles-navElemText{
+  font-size: 2.5em;
+}
+
+.LargeStyles-headerText{
+  font-size: 1.4em;
+}
+
+.LargeStyles-blogList{
+  border-left: 0.4em solid #3D2918;
+  font-size: 1.4em;
+  margin-bottom: 0.3em;
+  padding-left: 0.6em;
+}
+
+.LargeStyles-indexStyle{
+  padding: 0 20%;
+}
+
+.LargeStyles-blogListContainer{
+  padding: 0 26%;
+}
+}</style><style>@media (max-width: 60em) {.SmallStyles-headerSmall{
+  font-weight: bold;
+  justify-content: center;
+  padding-bottom: 0.1em;
+  width: 100%;
+}
+
+.SmallStyles-headerLarge{
+  display: none;
+}
+
+.SmallStyles-headerContent{
+  padding-top: 0.5em;
+  text-align: center;
+}
+
+.SmallStyles-headerText{
+  font-size: 1.35em;
+}
+
+.SmallStyles-bodyContent{
+  font-size: 1.3em;
+  margin: 1em;
+  text-align: left;
+}
+
+.SmallStyles-navElem{
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: .25em;
+  text-align: center;
+  width: 100%;
+}
+
+.SmallStyles-blogList{
+  font-size: 1.6em;
+}
+
+.SmallStyles-navBar{
+  height: 5em;
+}
+}</style><style>.GeneralStyles-header{
+  background-color: #3D2918;
+}
+
+.GeneralStyles-headerText{
+  font-weight: bold;
+}
+
+.GeneralStyles-navBar{
+  background-color: #3D2918;
+}
+</style><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84071551-1', 'auto');
+  ga('send', 'pageview');
+  </script></head><body><div class=" GeneralStyles-header"><div class=" LargeStyles-headerLarge SmallStyles-headerLarge LargeStyles-headerContent"><h1><span class=" GeneralStyles-headerText LargeStyles-headerText" style="color: white;">Charles Henry Heckroth</span></h1></div><div class=" SmallStyles-headerSmall LargeStyles-headerSmall SmallStyles-headerContent"><h1><a class=" GeneralStyles-headerText SmallStyles-headerText" style="color: white;" href="../index.html">@checkroth</a></h1></div><div class=" GeneralStyles-navBar LargeStyles-navBar SmallStyles-navBar"><div class=" LargeStyles-navElem SmallStyles-navElem SmallStyles-headerLarge LargeStyles-navElemLeft"><a class=" LargeStyles-navElemText" style="color: white;" href="../index.html">Home</a></div><div class=" LargeStyles-navElem SmallStyles-navElem LargeStyles-navElemRight"><a class=" LargeStyles-navElemText" style="color: white;" href="../topBlog.html">Blog</a></div></div></div><div class=" LargeStyles-bodyContent SmallStyles-bodyContent"><div><span></span><h1>Maintaining a Scala Project of Growing Complexity</h1><h5>2016-09-13</h5>
+<p>This was my (unccepted) proposal to Scala Matsuri 2017.</p>
+<h2>Roping in Complexity, Decay, and Duplication in a Growing Scala Project</h2>
+<p>All software projects will grow in complexity and decay over time.
+<a href="https://en.wikipedia.org/wiki/Lehman's_laws_of_software_evolution">Lehman's Laws</a> of software evolution state that as a system evolves, &quot;its complexity increases unless work is done to maintain or reduce it&quot;, and that a system &quot;must be continually adapted or it becomes progressively less satisfactory&quot;.</p>
+<p>Scala has a lot of tools to help combat complexity and decay. I will cover my own process of spotting decaying components of our system, and how my team and I apply functional programming concepts to grow our system without wide-spread, unmaintainable complexity growth.
+Specifically, how we define and practice standards within our group of engineers and how I utilized Shapeless and HLists to remove heavy code duplication.</p>
+<p>I will briefly touch on the following specific topics:</p>
+<ul>
+<li>Scalaz and Functional Syntax as a standard</li>
+<li>Code formatting with Scalafmt</li>
+<li>Common structures vs. Copied Code</li>
+<li>Doing it right the first time</li>
+<li>Removing duplicated code using Shapeless</li>
+</ul>
+</div></div></body></html>

@@ -1,0 +1,306 @@
+<html><meta charset="utf-8" /><meta> <meta name="viewport" content="width=device-width, initial-scale=1">  </meta><head><title>Charles Henry Heckroth</title><style>@media (min-width: 60em) {.LargeStyles-headerLarge{
+  justify-content: center;
+  padding-bottom: 0.1em;
+  padding-top: 0.1em;
+  width: 100%;
+}
+
+.LargeStyles-headerSmall{
+  display: none;
+}
+
+.LargeStyles-headerContent{
+  text-align: center;
+}
+
+.LargeStyles-bodyContent{
+  font-size: 1.2em;
+  margin: 2em auto 0;
+  text-align: left;
+  width: 85%;
+}
+
+.LargeStyles-navElem{
+  float: left;
+  width: 50%;
+}
+
+.LargeStyles-navElemLeft{
+  padding-right: 10em;
+  text-align: right;
+}
+
+.LargeStyles-navElemRight{
+  padding-left: 10em;
+  text-align: left;
+}
+
+.LargeStyles-navBar{
+  height: 5em;
+}
+
+.LargeStyles-navElemText{
+  font-size: 2.5em;
+}
+
+.LargeStyles-headerText{
+  font-size: 1.4em;
+}
+
+.LargeStyles-blogList{
+  border-left: 0.4em solid #3D2918;
+  font-size: 1.4em;
+  margin-bottom: 0.3em;
+  padding-left: 0.6em;
+}
+
+.LargeStyles-indexStyle{
+  padding: 0 20%;
+}
+
+.LargeStyles-blogListContainer{
+  padding: 0 26%;
+}
+}</style><style>@media (max-width: 60em) {.SmallStyles-headerSmall{
+  font-weight: bold;
+  justify-content: center;
+  padding-bottom: 0.1em;
+  width: 100%;
+}
+
+.SmallStyles-headerLarge{
+  display: none;
+}
+
+.SmallStyles-headerContent{
+  padding-top: 0.5em;
+  text-align: center;
+}
+
+.SmallStyles-headerText{
+  font-size: 1.35em;
+}
+
+.SmallStyles-bodyContent{
+  font-size: 1.3em;
+  margin: 1em;
+  text-align: left;
+}
+
+.SmallStyles-navElem{
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: .25em;
+  text-align: center;
+  width: 100%;
+}
+
+.SmallStyles-blogList{
+  font-size: 1.6em;
+}
+
+.SmallStyles-navBar{
+  height: 5em;
+}
+}</style><style>.GeneralStyles-header{
+  background-color: #3D2918;
+}
+
+.GeneralStyles-headerText{
+  font-weight: bold;
+}
+
+.GeneralStyles-navBar{
+  background-color: #3D2918;
+}
+</style><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84071551-1', 'auto');
+  ga('send', 'pageview');
+  </script></head><body><div class=" GeneralStyles-header"><div class=" LargeStyles-headerLarge SmallStyles-headerLarge LargeStyles-headerContent"><h1><span class=" GeneralStyles-headerText LargeStyles-headerText" style="color: white;">Charles Henry Heckroth</span></h1></div><div class=" SmallStyles-headerSmall LargeStyles-headerSmall SmallStyles-headerContent"><h1><a class=" GeneralStyles-headerText SmallStyles-headerText" style="color: white;" href="../index.html">@checkroth</a></h1></div><div class=" GeneralStyles-navBar LargeStyles-navBar SmallStyles-navBar"><div class=" LargeStyles-navElem SmallStyles-navElem SmallStyles-headerLarge LargeStyles-navElemLeft"><a class=" LargeStyles-navElemText" style="color: white;" href="../index.html">Home</a></div><div class=" LargeStyles-navElem SmallStyles-navElem LargeStyles-navElemRight"><a class=" LargeStyles-navElemText" style="color: white;" href="../topBlog.html">Blog</a></div></div></div><div class=" LargeStyles-bodyContent SmallStyles-bodyContent"><div><span></span><h1>Property Testing: Why You Should Generate Test Data</h1><h4>2017-08-31</h4>
+<p>This post is cross-posted to <a href="https://dev.to/checkroth/property-testing-why-you-should-generate-test-data">dev.to</a></p>
+<p>I drank the functional programming cool-aid at my first <em>real</em> job. While I do not currently professionally develop with functional programming, I still apply what functional concepts I can -- property testing is a big one.</p>
+<p>I'm going to cover three main points:</p>
+<ul>
+<li>What's so special about property testing?</li>
+<li>How can I avoid over-complicating my tests when I can't predetermine expected results?</li>
+<li>When <em>shouldn't</em> I use property testing?</li>
+</ul>
+<h1>What's so special about property testing?</h1>
+<p>Of all the tools available in a functional library, Haskell's <em>quickcheck</em> is the one I see most re-purposed in other non-functional languages.</p>
+<p>At first glance, property testing looks like a fancy way of saying &quot;generating test data&quot;, and in a sense, it is. So why is it &quot;property&quot; testing?</p>
+<p>When you test a function with predetermined parameters, what you're really testing is that the function works for those inputs. You could add a <em>lot</em> of test parameters, enough to cover an &quot;acceptable&quot; range, but that's a lot of unnecessary work and nobody is likely to actually do it (though I have seen it).</p>
+<p>When you <em>property</em> test, you don't care what the input is - you're not testing that the function returns some value when given some input. You're testing that the function, when given an argument that fits its requirements (lets say an &quot;int&quot;), will do <em>something</em> and return the appropriate response to whatever input it was given.</p>
+<p>Let's look at a very simple example, an adder:</p>
+<pre><code class="language-python">def adder(i1, i2):
+  return i1 + i2
+</code></pre>
+<p>Simple, it takes two <code>int</code>s and returns the sum. That's the property - this function &quot;returns the sum of two ints&quot;.</p>
+<p>Let's look at a pretty standard test:</p>
+<pre><code class="language-python">class Tests:
+  @pytest.mark.parametrize(&quot;input1,input2,expect&quot;, [(1, 1, 2), (2, 2, 4)])
+  def test_adder(self, input1, input2, expect):
+    assert adder(input1, input2) == expect
+</code></pre>
+<p>This test passes: <code>2 passed in 0.02 seconds</code>. We would expect it to - the sum of 1 and 1 is 2, the sum of 2 and 2 is 4. But that's <em>not what this is testing</em>.</p>
+<p>Let's add some more &quot;adders&quot;:</p>
+<pre><code class="language-python">def adder2(i1: int, i2: int):
+  if i1 == 1:
+    return 2
+  if i1 == 2:
+    return 4
+
+def adder3(i1: int, i2: int):
+  return i1*2
+</code></pre>
+<p>And let's run the same test on those:</p>
+<pre><code class="language-python">  @pytest.mark.parametrize(&quot;input1,input2,expect&quot;, [(1, 1, 2), (2, 2, 4)])
+  def test_adder1(self, input1, input2, expect):
+    assert adder2(input1, input2) == expect
+
+  @pytest.mark.parametrize(&quot;input1,input2,expect&quot;, [(1, 1, 2), (2, 2, 4)])
+  def test_adder2(self, input1, input2, expect):
+    assert adder3(input1, input2) == expect
+</code></pre>
+<p>Tests are still passing: <code>6 passed in 0.02 seconds</code>
+Our tests aren't testing the <em>property</em> of this function, only some <em>explicit</em> result for some <em>explicit</em> input.</p>
+<p>Now lets take a look at <a href="https://pypi.python.org/pypi/pytest-quickcheck">pytest-quickcheck</a>
+This library gives us a new way of specifying test arguments: <code>@pytest.mark.randomize</code>. Let's re-write our first test with it.</p>
+<pre><code class="language-python">    @pytest.mark.randomize(i1=int, i2=int)
+    def test_adder(self, i1, i2):
+        expect = i1 + i2
+        assert adder(i1, i2) == expect
+</code></pre>
+<p>Note that I build expect in the test - we can't predetermine the output when we don't know the input.
+This test will pass: <code>9 passed in 0.03 seconds</code></p>
+<p>Now lets add the rest of the tests:</p>
+<pre><code class="language-python">    @pytest.mark.randomize(i1=int, i2=int)
+    def test_adder2(self, i1, i2):
+        expect = i1 + i2
+        assert adder2(i1, i2) == expect
+
+    @pytest.mark.randomize(i1=int, i2=int)
+    def test_adder3(self, i1, i2):
+        expect = i1 + i2
+        assert adder3(i1, i2) == expect
+</code></pre>
+<p>You wouldn't expect these tests to work - adder2 is an if statement and will explode when its first parameter isn't 1 or 2. Adder3 isn't an adder at all - it multiplies.</p>
+<pre><code>E       assert -4819122279534621102 == -6480923863972990104
+E        +  where -4819122279534621102 = adder3(-2409561139767310551, -4071362724205679553)
+
+tests2.py:33: AssertionError
+</code></pre>
+<p>Our test is actually testing that our <code>adder</code> is <em>adding</em>. This might seem like overkill (especially since the test completely re-implements the function), but as you test more complicated functions it begins to make a lot more sense.</p>
+<h1>How can I avoid over-complicating my tests when I can't predetermine expected results?</h1>
+<p>You might consider the &quot;weakness&quot; of property testing to be the fact that you have to write so much <em>logic</em> in your tests - many people turn their noses at the thought! Why should you have to write logic in your tests, especially as they begin to resemble the thing you're testing in the first place?</p>
+<p>First, it's actually <em>okay</em> to re-implement your entire function in your test. Especially in a case like adder. The import part is that your test becomes a static part of your project that will do two things: Prove your function works, and prevent you from breaking the function in the future.</p>
+<p>A lot of your tests are going to be for more complicated functions - <code>adder</code> is an oversimplified example. Let's look at a function that uses more complicated structures.
+This function will take a collection of dicts containing x and y coordinates, and calculate statistics for the quadrants of a graph based on where the collection's entries lay.</p>
+<pre><code class="language-python">def calculate_graph_quadrants(entries: List[Dict[Any, Any]]):
+    total = len(entries)
+    quadrants = {
+        'quad1': { 'count': 0 },
+        'quad2': { 'count': 0 },
+        'quad3': { 'count': 0 },
+        'quad4': { 'count': 0 }
+    }
+
+    for entry in entries:
+        quadrant = calc_quadrant(entry['x'], entry['y'])
+        key = 'quad{}'.format(quadrant)
+        quadrants[key]['count'] += 1
+    for _, quad_stats in quadrants.items():
+        quad_stats['share'] = quad_stats['count'] / total
+    return quadrants
+
+def calc_quadrant: 
+    # takes an x and y, returns quadrant of graph coordinates land
+    ...
+</code></pre>
+<p>This looks a bit harder to test than <code>adder</code> - we have to build this <code>entries: List[Dict[Any, Any]]</code>, and somehow determine the expect counts and shares per quadrant. We could generate our data like this:</p>
+<pre><code class="language-python">    @pytest.mark.randomize(xl=list_of(int, items=20),
+                           yl=list_of(int, items=20))
+    def test_calculate_graph_quadrants(self, xl, xy):
+        pass
+</code></pre>
+<p>But I wouldn't recommend it - this would require a complete re-implementation of the function. I'm not even going to write what the test would look like because its not worth the effort.</p>
+<p>The key to writing a <em>clean</em> property test for a complicated function is to <em>reduce</em> unknowns from your generated data as much as you can without reducing the strength of your test.</p>
+<pre><code class="language-python">    @pytest.mark.randomize(count=int, min_num=1, max_num=50)
+    def test_calculate_graph_quadrants(self, count):
+        q1 = [{'x': -1, 'y': 1} for _ in range(count)]
+        q2 = [{'x': 1, 'y': 1} for _ in range(count)]
+        q3 = [{'x': -1, 'y': -1} for _ in range(count)]
+        q4 = [{'x': 1, 'y': -1} for _ in range(count)]
+        entries = list(itertools.chain(q1, q2, q3, q4)
+</code></pre>
+<p>We're not testing the ability to determine what quadrants the coordinates fall in to - that's a different function. We can assume that it works as intended and write another test for that function later.
+So all we <em>really</em> need to make variable is how many entries for each quadrant we want to pass to the function. You could make each a different length, but there is little value in that - we can keep our test simple by passing the same amount of data for each expected quadrant.</p>
+<p>Since we know how many entries will fall in to each quadrant, the expected result is actually easy to calculate:</p>
+<pre><code class="language-python">    @pytest.mark.randomize(count=int, min_num=1, max_num=50)
+    def test_calculate_graph_quadrants(self, count):
+        q1 = [{'x': -1, 'y': 1} for _ in range(count)]
+        q2 = [{'x': 1, 'y': 1} for _ in range(count)]
+        q3 = [{'x': -1, 'y': -1} for _ in range(count)]
+        q4 = [{'x': 1, 'y': -1} for _ in range(count)]
+        entries = list(itertools.chain(q1, q2, q3, q4)
+    # repeat the count for each quadrant, so the total is simple
+    total = count*4
+    # Each quadrant has the same count - the expected share will also be the same.
+    expected_share = count / total
+    # we could also do expected_share = .25
+    expect = { q: {'count': count, 'share': expected_share}
+               for q in ['quad1', 'quad2', 'quad3', 'quad4']}
+    assert calculate_graph_quadrants(entries) == expect
+</code></pre>
+<p>This test will pass, given that <code>calc_quadrant</code> is accurate. That's not too bad, we don't really have that much logic in the test. By controlling what we do and don't want to be randomized, we can determine what our function is supposed to return fairly easily.</p>
+<p><em>Side note:</em> We are all slaves to the limitations of our tools. If we had a library like Scala's <code>scalacheck</code>, we would be able to write a generator for <code>entries</code> that builds the same thing without writing the logic in our tests.</p>
+<h1>When <em>Shouldn't</em> I Use Property Testing?</h1>
+<p>You should <em>always</em> use property testing. But some libraries aren't cut out for generation on a limited spectrum that you might want. The following could all be done with <code>scalacheck</code>'s custom generators, but with <code>pytest-quickcheck</code> it simply isn't possible.</p>
+<p>Let's demonstrate with a test for <code>calc_quadrant</code>. Here's the function:</p>
+<pre><code class="language-python">def calc_quadrant(x: int, y: int):
+    if x &lt; 0:
+        if y &gt;= 0:
+            return 1
+        elif y &lt; 0:
+            return 3
+    if x &gt;= 0:
+        if y &lt; 0:
+            return 4
+        elif y &gt;= 0:
+            return 2
+</code></pre>
+<p>We could say that this function has four tightly-defined properties, extending from the four logical paths of x and y's sign (+/-). We <em>could</em> randomly generate x and y and build assert like this:</p>
+<pre><code class="language-python">@pytest.mark.randomize(x=int, y=int)
+def test_calc_quadrant(self, x: int, y: int):
+    if x &lt; 0:
+        if y &gt;= 0:
+            expect = 1
+        elif y &lt; 0:
+            expect = 3
+    if x &gt;= 0:
+        if y &lt; 0:
+            expect = 4
+        elif y &gt;= 0:
+            expect = 2
+    assert calc_quadrant(x, y) == expect
+</code></pre>
+<p>Look at that, we've just copied the whole function over to the test. I know I said its okay to essentially re-implement your function in your test, but in this case I don't really want to. We can achieve a worthwhile result using <code>parametrize</code>, giving all permutations of x and y's signage.</p>
+<pre><code class="language-python">@pytest.mark.parametrize(&quot;x,y,expect&quot;, [(-1, 1, 1), (1, 1, 2), (-1, -1, 3), (1, -1, 4)])
+def test_calc_quadrant(self, x: int, y: int, expect: int):
+    assert calc_quadrant(x, y) == expect
+</code></pre>
+<p>We still want to use property testing here though, to cover that any range of the test's input will produce an output in our finite range (1-4).</p>
+<pre><code class="language-python">@pytest.mark.randomize(x=int, y=int)
+def test_calc_quadrant_in_range(self, x: int, y: int):
+    expect_range = [1, 2, 3, 4]
+    assert calc_quadrant(x, y) in expect_range
+</code></pre>
+<p>This way we can prove that the test will only produce an int corresponding to one of four quadrants. Couple this with the manual quadrant test and we have covered enough of the functionality to make most people happy. Obviously <code>calc_quadrant</code> <em>could</em> match specifically for -1 and 1 for our x and y values and otherwise just return <code>1</code>, which would satisfy both tests.</p>
+<p>Whether or not to implement the former property test (which re-implements the function) is really up to you. I would personally only do that if this were black box testing and I couldn't just look at the code to know that it isn't just matching specific values. Otherwise I would say that manual testing for quadrants and property testing for the result being within range is &quot;close enough&quot;.
+<br />
+<br /></p>
+</div></div></body></html>
